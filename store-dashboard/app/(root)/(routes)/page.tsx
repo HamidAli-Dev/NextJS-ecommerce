@@ -7,6 +7,7 @@ const SetupPage = () => {
   const onOpen = useStoreModal((state) => state.onOpen);
   const isOpen = useStoreModal((state) => state.isOpen);
 
+  // This will prist the modal to remain open even if user try to close it
   useEffect(() => {
     if (!isOpen) {
       onOpen();
