@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import Modal from "@/components/modal";
+import Modal from "@/components/models/modal";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
