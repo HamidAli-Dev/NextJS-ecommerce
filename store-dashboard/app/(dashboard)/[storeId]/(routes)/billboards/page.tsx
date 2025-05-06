@@ -1,0 +1,15 @@
+import React from "react";
+
+import BillBoardClient from "./components/billboard-client";
+
+const BillboardsPage = async () => {
+  return (
+    <div className="flex flex-col">
+      <div className="flex-1 p-8 pt-6 space-y-4">
+        <BillBoardClient />
+      </div>
+    </div>
+  );
+};
+
+export default BillboardsPage;
