@@ -16,7 +16,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/products/${product.id}`);
+    router.push(`/product/${product.id}`);
   };
 
   const onPreview: React.MouseEventHandler<HTMLButtonElement> = (e) => {
