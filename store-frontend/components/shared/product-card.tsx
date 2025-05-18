@@ -8,6 +8,7 @@ import { Product } from "@/types";
 import IconButton from "@/components/shared/icon-button";
 import Currency from "@/components/shared/currency";
 import usePreviewModal from "@/hooks/use-preview-modal";
+import useCart from "@/hooks/use-cart";
 
 interface ProductCardProps {
   product: Product;
@@ -16,6 +17,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const router = useRouter();
   const previewModal = usePreviewModal();
+  const cart = useCart();
 
   const handleClick = () => {
     router.push(`/product/${product.id}`);
@@ -29,6 +31,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   const onAddToCart: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
+
+    cart.addItem(product);
   };
 
   return (

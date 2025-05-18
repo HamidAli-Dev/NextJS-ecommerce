@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Button from "./shared/button";
 import { ShoppingBag } from "lucide-react";
 import { useRouter } from "next/navigation";
+import useCart from "@/hooks/use-cart";
 
 const NavbarActions = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -11,6 +12,7 @@ const NavbarActions = () => {
   }, []);
 
   const router = useRouter();
+  const card = useCart();
 
   if (!isMounted) {
     return null;
@@ -23,7 +25,9 @@ const NavbarActions = () => {
         onClick={() => router.push("/cart")}
       >
         <ShoppingBag size={20} color="white" />
-        <span className="ml-2 text-sm font-medium text-white">3</span>
+        <span className="ml-2 text-sm font-medium text-white">
+          {card.items.length}
+        </span>
       </Button>
     </div>
   );
