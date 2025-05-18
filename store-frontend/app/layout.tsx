@@ -4,6 +4,7 @@ import { Urbanist } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import ModalProvider from "@/providers/modal-provider";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${urbanist.className} antialiased`}>
+        <ModalProvider />
         <Navbar />
         {children}
         <Footer />
