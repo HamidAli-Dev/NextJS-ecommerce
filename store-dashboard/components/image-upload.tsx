@@ -1,6 +1,6 @@
 "use client";
 import Image from 'next/image';
-import { CldUploadWidget } from 'next-cloudinary';
+import { CldUploadWidget, CloudinaryUploadWidgetResults } from 'next-cloudinary';
 import { useEffect, useState } from 'react';
 import { ImagePlus, Trash } from 'lucide-react';
 
@@ -25,8 +25,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     setIsMounted(true);
   }, []);
 
-  const onUpload = (result: any) => {
-    onChange(result.info.secure_url);
+  const onUpload = (result: CloudinaryUploadWidgetResults) => {
+    if (result.info && typeof result.info === 'object' && 'secure_url' in result.info) {
+      onChange(result.info.secure_url);
+    }
   };
 
   if (!isMounted) {
@@ -52,7 +54,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           </div>
         ))}
       </div>
-      <CldUploadWidget onUpload={onUpload} uploadPreset="uqbwpqao">
+      <CldUploadWidget onSuccess={onUpload} uploadPreset="uqbwpqao">
         {({ open }) => {
           const onClick = () => {
             open();
