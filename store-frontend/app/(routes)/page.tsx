@@ -5,7 +5,7 @@ import ProductList from "@/components/product-list";
 import Container from "@/components/shared/container";
 import { Product } from "@/types";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export default async function Home() {
@@ -13,10 +13,12 @@ export default async function Home() {
   let products: Product[] = [];
 
   try {
-    billboard = await getBillboard("eb2c7637-9979-4d73-b55a-97ba80dc3bf2");
+    billboard = await getBillboard(
+      process.env.NEXT_PUBLIC_BILLBOARD_ID as string
+    );
     products = await getProducts({ isFeatured: true });
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error("Error fetching data:", error);
   }
 
   return (
